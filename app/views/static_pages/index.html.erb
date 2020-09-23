@@ -1,0 +1,16 @@
+<h1>StaticPages#index</h1>
+<%= form_with(url:'/static_pages/index', method:'get', local:true) do%>
+  <%= label_tag(:username, "Enter username")%> <br />
+  <%= text_field_tag(:username) %>
+  <%= submit_tag("Search username")%>
+<% end%>
+
+<% if params[:username]%>
+ <p>Results(<%= @photos.total %>)</p>
+  <% @photos.each do |photo| %>
+    <%= image_tag(photo.source)%><br /><br />
+  <% end %>
+<% else %>
+  <p>No results found!!!</p>
+<% end %>
+
